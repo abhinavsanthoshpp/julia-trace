@@ -3,9 +3,8 @@
 'use client';
 
 import { useState } from 'react';
-import { FinalReport } from '@/lib/tracerAgent';
+import { FinalReport } from '@/types'; // <-- UPDATED IMPORT PATH
 
-// A simple Spinner component we can use while loading
 const Spinner = () => <div className="spinner mx-auto"></div>;
 
 export default function HomePage() {
@@ -42,7 +41,6 @@ export default function HomePage() {
   };
 
   return (
-    // Added a gradient background for a more polished look
     <main className="flex min-h-screen flex-col items-center p-12 bg-gradient-to-b from-gray-900 to-gray-950 text-white">
       <div className="z-10 w-full max-w-3xl font-mono flex-grow">
         <h1 className="text-4xl font-bold mb-2 text-center text-cyan-400">
@@ -96,8 +94,7 @@ export default function HomePage() {
           )}
         </div>
       </div>
-       {/* Added a simple footer */}
-      <footer className="w-full text-center text-gray-500 text-xs mt-8">
+       <footer className="w-full text-center text-gray-500 text-xs mt-8">
         <p>Built for the JuliaOS Bounty</p>
       </footer>
     </main>

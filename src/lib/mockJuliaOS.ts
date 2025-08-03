@@ -1,9 +1,7 @@
 // src/lib/mockJuliaOS.ts
 
-import { Connection, ParsedTransactionWithMeta, SignatureResult } from '@solana/web3.js';
-
-// This is a MOCK implementation to simulate what the JuliaOS framework might provide.
-// In a real scenario, you would `npm install @juliaos/framework` and import from it.
+import { Connection, ParsedTransactionWithMeta } from '@solana/web3.js'; // <-- FIXED: Removed unused 'SignatureResult'
+import { TraceResult } from '../types'; // <-- NEW: Import our custom type
 
 class OnChainInterface {
     private connection: Connection;
@@ -18,7 +16,6 @@ class OnChainInterface {
 
     async getTransaction(signature: string): Promise<ParsedTransactionWithMeta | null> {
         console.log(`Fetching transaction: ${signature}`);
-        // The `maxSupportedTransactionVersion: 0` is important for compatibility with new transaction types
         const tx = await this.connection.getParsedTransaction(signature, {
             maxSupportedTransactionVersion: 0,
         });
@@ -47,15 +44,12 @@ export class JuliaOSAgent {
         return this;
     }
 
-    // This is a mock function for Day 2.
-    // It pretends to send data to an AI and get a result.
-    async processWithLLM(data: any): Promise<string> {
+    // FIXED: Changed 'data: any' to 'data: TraceResult[]'
+    async processWithLLM(data: TraceResult[]): Promise<string> {
         if (!this.llmPrompt) {
             throw new Error("LLM not configured. Use useLLM() first.");
         }
         console.log("Processing data with LLM...");
-        // In a real scenario, this would make an API call to an LLM.
-        // For now, we just return a formatted string.
         return `AI Analysis Result: ${JSON.stringify(data, null, 2)}`;
     }
 }

@@ -1,25 +1,11 @@
 // src/lib/tracerAgent.ts
 
 import { JuliaOSAgent } from './mockJuliaOS';
-
-// We update our type definitions to include the new AI summary
-export interface TraceResult {
-    hop: number;
-    signature: string;
-    source: string;
-    destination: string;
-    action: string;
-}
-
-export interface FinalReport {
-    trace: TraceResult[];
-    summary: string;
-}
+import { TraceResult, FinalReport } from '../types'; // <-- UPDATED IMPORT
 
 export async function runTrace(startSignature: string): Promise<FinalReport> {
     const SOLANA_RPC_URL = 'https://api.mainnet-beta.solana.com';
 
-    // 1. Initialize the agent and define the prompt for our AI.
     const agent = new JuliaOSAgent({ name: 'TracerAgent' })
         .useOnChain('solana', { rpcUrl: SOLANA_RPC_URL })
         .useLLM({
@@ -60,11 +46,8 @@ export async function runTrace(startSignature: string): Promise<FinalReport> {
         throw new Error(`Failed to fetch transaction, or the transaction itself failed. Signature: ${startSignature}`);
     }
 
-    // 2. NEW STEP: Use the agent's LLM capability to process the results.
     const aiSummary = await agent.processWithLLM(results);
     
     console.log("AI Summary Generated:", aiSummary);
-
-    // 3. Return both the raw trace and the AI summary.
     return { trace: results, summary: aiSummary };
 }
