@@ -10,7 +10,7 @@ This project was developed as a submission for the **AI DApp Development Bounty 
 
 A live version of the dApp is deployed on Vercel:
 
-**[https://julia-trace.vercel.app/](https://julia-trace.vercel.app/)** _(Note: This is a placeholder link. We will generate the real one in the final step.)_
+**[https://julia-trace-zqu2.vercel.app/)**
 
 ---
 
