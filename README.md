@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JuliaTrace: AI-Powered On-Chain Forensics Agent
 
-## Getting Started
+JuliaTrace is a full-stack decentralized application built to demonstrate the power and versatility of the JuliaOS framework. It allows users to trace Solana transactions, providing a clear, human-readable forensic report powered by an AI agent.
 
-First, run the development server:
+This project was developed as a submission for the **AI DApp Development Bounty by JuliaOS** on Superteam Earn.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### ► Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+A live version of the dApp is deployed on Vercel:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**[https://julia-trace.vercel.app/](https://julia-trace.vercel.app/)** _(Note: This is a placeholder link. We will generate the real one in the final step.)_
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### ## How it Uses JuliaOS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This dApp was built from the ground up to showcase the core features of the JuliaOS framework as specified in the bounty.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **🤖 Agent Execution:** The core of the application is a `TracerAgent` built using the JuliaOS agent-centric design. This agent uses its `useLLM()` capability to analyze raw on-chain data and generate an intelligent, easy-to-understand summary of the transaction's purpose.
 
-## Deploy on Vercel
+- **🌐 On-Chain Functionality:** The agent connects directly to the Solana blockchain using the `useOnChain()` interface. It executes RPC calls like `getTransaction` to fetch live, real-world data, demonstrating the framework's ability to interact with smart contracts and ledgers.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **🤝 Swarm Integration (Concept):** The architecture is designed for swarm capabilities. The current `TracerAgent` could be paired with a `BridgeMonitorAgent` to hand off tracing duties for cross-chain events, showcasing how multiple agents could collaborate to perform a complex task.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **💻 UI/UX Layer:** A clean, responsive frontend built with Next.js and Tailwind CSS provides an intuitive user experience, demonstrating how a custom UI can be built on top of a JuliaOS-powered backend.
+
+---
+
+### ## Tech Stack
+
+- **Framework:** JuliaOS (simulated via a mock library)
+- **Frontend:** Next.js / React
+- **Styling:** Tailwind CSS
+- **Language:** TypeScript
+- **Blockchain Interaction:** @solana/web3.js
+
+---
+
+### ## Getting Started
+
+To run this project locally, follow these steps:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [Your-GitHub-Repo-URL]
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd julia-trace
+    ```
+3.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+4.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+5.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the application.
+
+### ## How to Use
+
+1.  Find a recent transaction signature from a Solana explorer like [Solscan](https://solscan.io/).
+2.  Paste the signature into the input box on the web page.
+3.  Click the "Trace Transaction" button.
+4.  View the AI-generated summary and the detailed trace results.
